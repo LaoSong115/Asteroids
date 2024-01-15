@@ -1,7 +1,5 @@
 # Asteroids
-• Built a clone of the classic arcade game Asteroids, using JavaScript
+• Developed a replica of the iconic Asteroids arcade game utilizing JavaScript, WebGL, and glMatrix. 
 
-• Built Asteroids with WebGL and glMatrix
-
-• Implemented the project with TypeScript, Webpack, and NPM
+• Employed TypeScript, Webpack, and NPM for the project's implementation, showcasing proficiency in modern web development technologies.
 
