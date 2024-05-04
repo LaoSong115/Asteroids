@@ -7,14 +7,14 @@ FRAME_PERIOD = 60; // 1 frame / x frames/sec
 LEVEL_TIMEOUT = 2000; // How long to wait after clearing a level.
 
 // Player settings
-ROTATE_SPEED = Math.PI/10; // How fast do players turn?  (radians)
+ROTATE_SPEED = Math.PI/10; // player turn speed  (radians)
 MAX_SPEED = 15; // Maximum player speed
 THRUST_ACCEL = 1;
 DEATH_TIMEOUT = 2000; // milliseconds
-INVINCIBLE_TIMEOUT = 1000; // How long to stay invincible after resurrecting?
+INVINCIBLE_TIMEOUT = 1000; // time to stay invincible after resurrecting
 PLAYER_LIVES = 3;
-POINTS_PER_SHOT = 1; // How many points does a shot cost? (Should be >= 0.)
-POINTS_TO_EXTRA_LIFE = 500; // How many points to get a 1-up?
+POINTS_PER_SHOT = 1; // shot cost points (Should be >= 0.)
+POINTS_TO_EXTRA_LIFE = 500; // points to extra life
 
 // Bullet settings
 BULLET_SPEED = 20;
@@ -23,10 +23,10 @@ MAX_BULLET_AGE = 25;
 
 // Asteroid settings
 ASTEROID_COUNT = 2; // This + current level = number of asteroids.
-ASTEROID_GENERATIONS = 3; // How many times to they split before dying?
-ASTEROID_CHILDREN = 2; // How many does each death create?
+ASTEROID_GENERATIONS = 3; // times for asteroid split before dying
+ASTEROID_CHILDREN = 2; // splits for each asteroid death
 ASTEROID_SPEED = 3;
-ASTEROID_SCORE = 10; // How many points is each one worth?
+ASTEROID_SCORE = 10; // points each asteroid worth
 
 
 var Asteroids = function(home) {
@@ -497,7 +497,7 @@ Asteroids.asteroid = function (game, _gen) {
 }
 
 Asteroids.collision = function (a, b) {
-    // if a.getPosition() inside b.getBounds?
+    // check if a.getPosition() inside b.getBounds
     var a_pos = a.getPosition(),
         b_pos = b.getPosition();
 
@@ -733,7 +733,7 @@ Asteroids.play = function (game) {
                 }
             }
 
-            // Kill the asteroid?
+            // kill asteroids
             if (killit) {
                 var _gen = asteroids[i].getGeneration() - 1;
                 if (_gen > 0) {
@@ -753,7 +753,7 @@ Asteroids.play = function (game) {
                 continue;
             }
 
-            // Kill the player?
+            // kill player
             if (!game.player.isDead() &&
                 !game.player.isInvincible() &&
                 Asteroids.collision(game.player, asteroids[i])) {
@@ -772,7 +772,7 @@ Asteroids.play = function (game) {
 
         ctx.restore();
 
-        // Do we need to level up?
+        // level up
         if (0 == game.asteroids.length && 
             last_asteroid_count != 0) {
             setTimeout(function() {
@@ -792,7 +792,7 @@ Asteroids.play = function (game) {
     }, FRAME_PERIOD);
 }
 
-// Some boring constants.
+// constants.
 Asteroids.LOG_ALL = 0;
 Asteroids.LOG_INFO = 1;
 Asteroids.LOG_DEBUG = 2;
@@ -807,5 +807,5 @@ Asteroids.RIGHT = 39;
 Asteroids.DOWN = 40;
 Asteroids.SPACE = 32;
 
-// Load it up!
+// load game
 window.onload = Asteroids(document.getElementById('asteroids'));
